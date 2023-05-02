@@ -25,6 +25,9 @@ export const enum usuariosTypeActions {
 }
 
 //Load Usuarios
+
+// A função createAction retorna uma função, que quando chamada retorna um objeto no formato da interface Action. 
+// O método props é usado para definir quaisquer metadados adicionais necessários para o tratamento da ação
 export const LoadUsuarios = createAction(
     usuariosTypeActions.LOAD_USUARIOS
 );

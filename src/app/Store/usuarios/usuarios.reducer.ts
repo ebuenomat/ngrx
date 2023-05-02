@@ -14,6 +14,7 @@ export const initialState: UsuariosState = {
     error: ''
 }
 
+//Lembrar que ao utilizar _variável, significa que a variável é privada, ou seja, apenas métodos da propria classe/objeto, podem acessa-los.
 const _usuariosReducer = createReducer(
     initialState,
     on(fromUsuariosAction.LoadUsuariosSucess,(state, {payload}) => ({... state, usuarios: payload, error: ''})),

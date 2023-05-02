@@ -1,3 +1,5 @@
+Iniciar a aplicação: 1 - npm start, 2 - ng serve -o
+
 # Ngrx
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.19.

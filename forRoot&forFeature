@@ -1,0 +1,19 @@
+							    forRoot & forFeature de Módulos
+
+Em primeiro lugar, para lidar facilmente com os módulos Angular, você deve conhecer algumas terminologias básicas que irão ajudá-lo com problemas semelhantes a este no futuro.
+
+Um aplicativo Angular é (basicamente) feito de um módulo, chamado "AppModule" que é convencionalmente conhecido como Root Module: este é o módulo principal do aplicativo, aquele inicializado no arquivo main.ts que é, na verdade, a entrada do aplicativo apontar. Quando você importa alguns módulos externos para o array imports do AppModule, normalmente você invoca o método estático forRoot para dar uma configuração inicial a esse módulo: é o caso do método forRoot do StoreModule, que você define a configuração inicial da loja.
+
+Você pode desenvolver seu aplicativo encontrando alguma "zona de preocupações" para resolver uma parte específica do seu problema. Quando você mescla componentes, diretivas, serviços e outros elementos Angular em um módulo, esse módulo se torna um featureModule porque, como sugere a convenção de nomenclatura, ele fornece um recurso para seu aplicativo. Não importa como você carrega um módulo (Eagerly ou Lazily), ele sempre será um módulo de recurso.
+
+O método forRoot é invocado no AppModule e, geralmente, uma vez no aplicativo para inicializar o Store e fornecer a configuração inicial de redutores/ações/estado. Se você usar o EffectsModule, invocará o método forRoot neste módulo também:
+
+@ngModule({ importa: [ StoreModule.forRoot(), EffectsModule.forRoot() ] }) class AppModule {}
+
+O método forFeature é invocado em qualquer módulo de recurso que requer sua própria parte do gerenciamento de estado: como exemplo, um UserModule definirá sua própria parte do estado, descrevendo as ações necessárias, redutores e assim por diante. Se você usar o EffectsModule, lembre-se de invocar o método forFeature nele também. Como você mesmo deve ter entendido, forFeature (como o método forChild do Angular mais genérico) pode ser invocado várias vezes para o mesmo módulo importado no aplicativo:
+
+AppModule -> StoreModule.forRoot(...) UsersModule -> StoreModule.forFeature(...) OtherModule -> StoreModule.forFeature(...)
+
+Por fim, lembre-se de que as assinaturas forRoot e forFeature são ligeiramente diferentes entre si: a última tem, de fato, o primeiro parâmetro que descreve o nome do recurso. Os outros parâmetros, se bem me lembro, são os mesmos do método forRoot. Se você tentar gerar um clichê para um módulo de recurso com o pacote @ngrx/schematics com o seguinte comando: ng generate feature user/User -m modules/users/users.module.ts --group
+
+You will find that the feature name will simply be the lowercased version of the User word in the given command: user.
