@@ -10,6 +10,7 @@ import * as fromUsuariosAction from '../Store/usuarios/usuarios.actions'
   templateUrl: './listar-usuarios.component.html',
   styleUrls: ['./listar-usuarios.component.scss']
 })
+
 export class ListarUsuariosComponent implements OnInit {
   listaUsuarios: UserModel[] = [];
 
