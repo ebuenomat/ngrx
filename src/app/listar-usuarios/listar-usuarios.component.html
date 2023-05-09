@@ -1,4 +1,7 @@
-<p>listar-usuarios works!</p>
+<details>
+    <summary>Usuários</summary>
+    <p>Lista de usuários cadastrados</p>
+</details>
 
 <table class="table">
     <thead>
@@ -11,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of listaUsuarios">
+        <tr *ngFor="let row of listaUsuarios$ | async">
             <td>{{ row.id }}</td>
             <td>{{ row.nome }}</td>
             <td>{{ row.idade }}</td>

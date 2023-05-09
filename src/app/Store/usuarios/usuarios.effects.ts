@@ -54,7 +54,7 @@ export class UsuariosEffects {
             ofType(fromUsuariosAction.usuariosTypeActions.UPDATE_USUARIO),
             exhaustMap((user:any) => this.userService.updateUsuario(user.payload)
                 .pipe(
-                    map((payload: UserModel) => fromUsuariosAction.UpdateUsuarioSucess({payload}),
+                    map(payload => fromUsuariosAction.UpdateUsuarioSucess({payload}),
                     catchError(error => of(fromUsuariosAction.UpdateUsuarioFail({error})))
                     )
                 )  

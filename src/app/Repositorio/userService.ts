@@ -28,7 +28,7 @@ export class UserService {
         let headers = new HttpHeaders();
         headers = headers.set('content-type', 'application/json; charset=utf-8')
 
-        return this.http.put<UserModel>('http://localhost:3000/usuarios' + user.id, JSON.stringify(user), {headers: headers})
+        return this.http.put<UserModel>('http://localhost:3000/usuarios/' + user.id, JSON.stringify(user), {headers: headers})
     }
 
     deleteUsuario(id:number) {

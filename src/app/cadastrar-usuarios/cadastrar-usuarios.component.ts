@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../Models/userModel';
-import { UserService } from '../Repositorio/userService';
+import { AppState } from '../Store/appState';
+import * as fromUsuariosAction from '../Store/usuarios/usuarios.actions'
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-cadastrar-usuarios',
@@ -10,7 +12,7 @@ import { UserService } from '../Repositorio/userService';
 export class CadastrarUsuariosComponent implements OnInit {
   model: UserModel = { id: 0, nome: '', idade: 0, perfil: ''}
 
-  constructor(private userService: UserService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit(): void {
 
@@ -18,9 +20,11 @@ export class CadastrarUsuariosComponent implements OnInit {
 
   addUsuario() {
       if(this.model.id == 0) {
-        this.userService.addUsuario(this.model).subscribe();
+        // this.userService.addUsuario(this.model).subscribe();
+        this.store.dispatch(fromUsuariosAction.CreateUsuario({payload: this.model}));
       }else {
-
+        console.log('atualizar', this.model);
+        this.store.dispatch(fromUsuariosAction.UpdateUsuario({payload: this.model}))
       }
   }
 }

@@ -23,6 +23,30 @@
       "nome": "user 4",
       "idade": "35",
       "perfil": "Diretor"
+    },
+    {
+      "id": 5,
+      "nome": "User 5",
+      "idade": "39",
+      "perfil": "Consultor"
+    },
+    {
+      "id": 6,
+      "nome": "user 6",
+      "idade": "80",
+      "perfil": "Chefe"
+    },
+    {
+      "id": 7,
+      "nome": "user 6",
+      "idade": "41",
+      "perfil": "Consultor"
+    },
+    {
+      "id": 8,
+      "nome": "user 6",
+      "idade": "41",
+      "perfil": "Consultor"
     }
   ]
 }
